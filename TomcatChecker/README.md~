@@ -1,3 +1,0 @@
-```bash
-*/7 * * * * /my/path/tomcatChecker.sh >> /my/path/log.txt
-```
