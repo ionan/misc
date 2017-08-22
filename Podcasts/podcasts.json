@@ -1,0 +1,34 @@
+[
+  {
+    "url": "http://www.ivoox.com/podcast-negra-criminal_sq_f1274027_1.html",
+    "outputFile": "nc.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-carnecruda-es-programas_sq_f157350_1.html",
+    "outputFile": "cc.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-cultureta_sq_f1249913_1.html",
+    "outputFile": "lacult.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-orbita-de-endor-podcast_sq_f113302_1.html",
+    "outputFile": "lode.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-podcast-el-octavo-pasajero_sq_f14315_1.html",
+    "outputFile": "op.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-todopoderosos_sq_f1147805_1.html",
+    "outputFile": "tp.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-universo-iker-oficial_sq_f1269157_1.html",
+    "outputFile": "ui.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-escobula-brujula_sq_f169241_1.html",
+    "outputFile": "ledlb.xml"
+  }
+]
