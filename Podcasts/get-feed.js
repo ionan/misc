@@ -1,4 +1,18 @@
 var PAUSE = 1000;
+var months = {
+  "ene": "01",
+  "feb": "02",
+  "mar": "03",
+  "abr": "04",
+  "may": "05",
+  "jun": "06",
+  "jul": "07",
+  "ago": "08",
+  "sep": "09",
+  "oct": "10",
+  "nov": "11",
+  "dic": "12"
+};
 if (!String.prototype.endsWith) {
   String.prototype.endsWith = function(searchString, position) {
       var subjectString = this.toString();
@@ -53,6 +67,16 @@ function GetFeed(currentXML){
             if (lastGuid && guid === lastGuid){
               return true;
             }
+            var pubDate = $(a).parent().nextAll('.action').find('.date').attr("title")
+                              .replace(/^([0-9]+):([0-9]+) - ([0-9]+) de ([a-z]+)\. de ([0-9]+)/g, "$1;$2;$3;$4;$5").split(";");
+            var dateTokens = {
+              hour: pubDate[0],
+              minutes: pubDate[1],
+              day: pubDate[2],
+              month: months[pubDate[3]],
+              year: pubDate[4]
+            };
+            var pubDate = dateTokens.year + "-" + dateTokens.month + "-" + dateTokens.day + " " + dateTokens.hour + ":" + dateTokens.minutes;
             var item = createElement(docu, "item");
             item.appendChild(createElement(docu, "title", [], title, true));
             item.appendChild(createElement(docu, "link", [], link));
@@ -63,7 +87,8 @@ function GetFeed(currentXML){
             ]));
             item.appendChild(createElement(docu, "description", [], description, true));
             item.appendChild(createElement(docu, "guid", [], guid));
-            item.appendChild(createElement(docu, "pubDate", [], moment().subtract(substract++, 'days').format('dd, DD MMM YYYY HH:mm:ss')));
+            //item.appendChild(createElement(docu, "pubDate", [], moment().subtract(substract++, 'days').format('dd, DD MMM YYYY HH:mm:ss')));
+            item.appendChild(createElement(docu, "pubDate", [], moment(pubDate).format('dd, DD MMM YYYY HH:mm:ss')));
             item.appendChild(createElement(docu, "itunes:duration", [], duration));
             docu.getElementsByTagName('channel')[0].appendChild(item);
             window.callPhantom({log: "added item with guid " + guid});
