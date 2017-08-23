@@ -12,7 +12,7 @@ function getFeed(podcast, data){
       if (result) {
         page.onCallback = function(data) {
           if (data.log){
-            console.log(data.log);
+            console.log("\t" + data.log);
           } else {
             if (data.added > 0){
               var xml = page.content.replace(/^.*?<body.*?>/g, "").replace(/<\/body><\/html>.*?$/g, "");

@@ -41,6 +41,8 @@ function createElement(docu, name, attributes, text, isCData){
   return elem;
 }
 var docu = new DOMParser().parseFromString('<channel></channel>',  "application/xml");
+var docuChannel = docu.getElementsByTagName('channel')[0];
+var itemsImported = [];
 function GetFeed(currentXML){
     var lastGuid = null;
     var xml = null;
@@ -52,9 +54,9 @@ function GetFeed(currentXML){
     var shareBtnSelector = ".zone-tools > a:first";
     var substract = 5000;
     var getItems = function(url, $) {
-        if (!xml && url.endsWith('_1.html')) return false;
-        window.callPhantom({log: "working on " + url});
+        //if (!xml && url.endsWith('_1.html')) return false;
         var items = $('.title-wrapper.text-ellipsis-multiple > a');
+        window.callPhantom({log: "working on " + url + " (" + items.length + " items)"});
         for (var i = 0; i < items.length; i++) {
             var a = items[i];
             var duration = $(a).parent().next('.time').first().html();
@@ -87,11 +89,10 @@ function GetFeed(currentXML){
             ]));
             item.appendChild(createElement(docu, "description", [], description, true));
             item.appendChild(createElement(docu, "guid", [], guid));
-            //item.appendChild(createElement(docu, "pubDate", [], moment().subtract(substract++, 'days').format('dd, DD MMM YYYY HH:mm:ss')));
             item.appendChild(createElement(docu, "pubDate", [], moment(pubDate).format('dd, DD MMM YYYY HH:mm:ss')));
             item.appendChild(createElement(docu, "itunes:duration", [], duration));
-            docu.getElementsByTagName('channel')[0].appendChild(item);
-            window.callPhantom({log: "added item with guid " + guid});
+            itemsImported.push(item);
+            window.callPhantom({log: "added item  '" + title + "' (total of " + itemsImported.length + " children)"});
         }
         return false;
     };
@@ -105,7 +106,7 @@ function GetFeed(currentXML){
         $(document.body).find('title:first').text('#: ' + currentTitle);
       }
       var channel = $(document.body).find('channel')[0];
-      var items = docu.getElementsByTagName('channel')[0].childNodes;
+      var items = itemsImported;
       try {
         if (prepend){
           var firstItem = $(document.body).find('item')[0];
@@ -113,6 +114,7 @@ function GetFeed(currentXML){
             channel.insertBefore(items[i], firstItem);
           }
         } else {
+          $(document.body).find('channel > item').remove();
           for (i = 0; i < items.length; i++) {
             channel.appendChild(items[i]);
           }
