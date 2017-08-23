@@ -30,5 +30,17 @@
   {
     "url": "http://www.ivoox.com/podcast-escobula-brujula_sq_f169241_1.html",
     "outputFile": "ledlb.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-yo-dispare-a-j-r_sq_f119351_1.html",
+    "outputFile": "jr.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-buhardilla-2-0_sq_f12186_1.html",
+    "outputFile": "bu.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-tu-no-has-tenido-infancia_sq_f129884_1.html",
+    "outputFile": "inf.xml"
   }
 ]

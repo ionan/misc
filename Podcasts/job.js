@@ -14,14 +14,15 @@ function getFeed(podcast, data){
           if (data.log){
             console.log(data.log);
           } else {
-            var xml = page.content.replace(/^.*?<body.*?>/g, "").replace(/<\/body><\/html>.*?$/g, "");
-            fs.write(podcast.outputFile, xml, 'w');
-            console.log("Done!");
+            if (data.added > 0){
+              var xml = page.content.replace(/^.*?<body.*?>/g, "").replace(/<\/body><\/html>.*?$/g, "");
+              fs.write(podcast.outputFile, xml, 'w');
+            }
+            console.log("Done (added " + data.added + ")!");
             doDownload();
           }
         };
         page.evaluate(function(xml){
-          console.log(xml);
           GetFeed(xml);
         }, data);
       } else {

@@ -38,7 +38,7 @@ function GetFeed(currentXML){
     var shareBtnSelector = ".zone-tools > a:first";
     var substract = 5000;
     var getItems = function(url, $) {
-        if (!xml && url.endsWith('_1.html')) return [];
+        if (!xml && url.endsWith('_1.html')) return false;
         window.callPhantom({log: "working on " + url});
         var items = $('.title-wrapper.text-ellipsis-multiple > a');
         for (var i = 0; i < items.length; i++) {
@@ -76,7 +76,8 @@ function GetFeed(currentXML){
       document.write = data.documentElement
       document.body.appendChild(data.documentElement);
       if (!prepend){
-        $(document.body).find('title:first').text('#: ' + $(document.body).find('title:first').text());
+        var currentTitle = $(document.body).find('title:first').text();
+        $(document.body).find('title:first').text('#: ' + currentTitle);
       }
       var channel = $(document.body).find('channel')[0];
       var items = docu.getElementsByTagName('channel')[0].childNodes;
@@ -94,14 +95,16 @@ function GetFeed(currentXML){
       } catch(ex){
             window.callPhantom({log: ex.toString()});
       }
-      window.callPhantom({xml: data});
+      window.callPhantom({xml: data, added: items.length});
     };
     var getXML = function() {
         if (xml){
           finishProcess(xml, true);
         } else {
           var xmlURL = $('#suscription li:first input').length > 0 ? $('#suscription li:first input')[0].value : location.href.replace('_sq_', '_fg_').replace('_1.html', '_filtro_1.xml');
-          $.get(xmlURL, finishProcess);
+          $.get(xmlURL, function(data){
+            finishProcess(data, false);
+          });
         }
     };
     var script = document.createElement('script');
