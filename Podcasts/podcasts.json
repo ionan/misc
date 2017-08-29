@@ -42,5 +42,13 @@
   {
     "url": "http://www.ivoox.com/podcast-tu-no-has-tenido-infancia_sq_f129884_1.html",
     "outputFile": "inf.xml"
+  },
+  {
+    "url": "https://www.ivoox.com/podcast-complejo-lambda_sq_f11425_1.html",
+    "outputFile": "cl.xml"
+  },
+  {
+    "url": "https://www.ivoox.com/podcast-podcinema_sq_f1615_1.html",
+    "outputFile": "pod.xml"
   }
 ]
