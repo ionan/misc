@@ -50,5 +50,21 @@
   {
     "url": "https://www.ivoox.com/podcast-podcinema_sq_f1615_1.html",
     "outputFile": "pod.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-hello-friki_sq_f134580_1.html",
+    "outputFile": "hf.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-podcast-hielo-fuego_sq_f199467_1.html",
+    "outputFile": "phyf.xml"
+  },
+  {
+    "url": "https://www.ivoox.com/podcast-rosa-vientos_sq_f11254_1.html",
+    "outputFile": "lrdlv-new.xml"
+  },
+  {
+    "url": "https://www.ivoox.com/podcast-aldea-irreductible_sq_f12190_1.html",
+    "outputFile": "lai.xml"
   }
 ]
