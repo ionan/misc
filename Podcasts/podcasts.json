@@ -66,5 +66,9 @@
   {
     "url": "https://www.ivoox.com/podcast-aldea-irreductible_sq_f12190_1.html",
     "outputFile": "lai.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-economia-directa_sq_f130951_1.html",
+    "outputFile": "ed.xml"
   }
 ]
