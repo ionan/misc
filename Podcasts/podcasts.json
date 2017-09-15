@@ -70,5 +70,9 @@
   {
     "url": "http://www.ivoox.com/podcast-economia-directa_sq_f130951_1.html",
     "outputFile": "ed.xml"
+  },
+  {
+    "url": "https://www.ivoox.com/podcast-oh-my-lol_sq_f1160064_1.html",
+    "outputFile": "lol.xml"
   }
 ]
