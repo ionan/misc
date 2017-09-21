@@ -74,5 +74,9 @@
   {
     "url": "https://www.ivoox.com/podcast-oh-my-lol_sq_f1160064_1.html",
     "outputFile": "lol.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-cafetera-radiocable_sq_f197843_1.html",
+    "outputFile": "cafe.xml"
   }
 ]
