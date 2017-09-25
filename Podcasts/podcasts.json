@@ -78,5 +78,9 @@
   {
     "url": "http://www.ivoox.com/podcast-cafetera-radiocable_sq_f197843_1.html",
     "outputFile": "cafe.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-salvados-jordi-evole-la-sexta_sq_f133317_1.html",
+    "outputFile": "salv.xml"
   }
 ]
