@@ -82,5 +82,9 @@
   {
     "url": "http://www.ivoox.com/podcast-salvados-jordi-evole-la-sexta_sq_f133317_1.html",
     "outputFile": "salv.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-kinotico_sq_f1297885_1.html",
+    "outputFile": "kino.xml"
   }
 ]
