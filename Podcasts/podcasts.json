@@ -86,5 +86,9 @@
   {
     "url": "http://www.ivoox.com/podcast-kinotico_sq_f1297885_1.html",
     "outputFile": "kino.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-teleadictos_sq_f17917_1.html",
+    "outputFile": "telead.xml"
   }
 ]
