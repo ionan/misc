@@ -90,5 +90,9 @@
   {
     "url": "http://www.ivoox.com/podcast-teleadictos_sq_f17917_1.html",
     "outputFile": "telead.xml"
+  },
+  {
+    "url": "https://www.ivoox.com/podcast-international-podcast_sq_f1109900_2.html",
+    "outputFile": "intpod.xml"
   }
 ]
