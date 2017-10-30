@@ -94,5 +94,9 @@
   {
     "url": "https://www.ivoox.com/podcast-international-podcast_sq_f1109900_1.html",
     "outputFile": "intpod.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-nomadas_sq_f1925_1.html",
+    "outputFile" : "nom.xml"
   }
 ]
