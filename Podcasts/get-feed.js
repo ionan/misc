@@ -1,4 +1,4 @@
-var PAUSE = 1000;
+var PAUSE = 5000;
 var months = {
   "ene": "01",
   "feb": "02",
