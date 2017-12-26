@@ -130,5 +130,9 @@
   {
     "url": "https://www.ivoox.com/podcast-biblioteca-del-te_sq_f1417630_1.html",
     "outputFile": "bib-te.xml"
+  },
+  {
+    "url": "https://www.ivoox.com/podcast-milana-bonita_sq_f15762_1.html",
+    "outputFile": "mil-bon.xml"
   }
 ]
