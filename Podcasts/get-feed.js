@@ -24,6 +24,7 @@ if (!String.prototype.endsWith) {
       return lastIndex !== -1 && lastIndex === position;
   };
 }
+var $ = jQuery;
 function createElement(docu, name, attributes, text, isCData){
   var elem = docu.createElement(name);
   if (attributes){
@@ -47,29 +48,42 @@ function GetFeed(currentXML){
     var lastGuid = null;
     var xml = null;
     if (currentXML){
-      xml = $.parseXML(currentXML);
-      lastGuid = xml.getElementsByTagName("item")[0].getElementsByTagName("guid")[0].firstChild.nodeValue;
+     	try {
+//console.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+//console.log(currentXML);
+//console.log("----------------------------------------------------------------------------------------------------");
+       xml = $.parseXML(currentXML);
+	var items =  xml.getElementsByTagName("item");
+        if (!items || items.length == 0) return console.log("No items??");
+        var guidItem = items[0].getElementsByTagName("guid");
+        if (!guidItem || guidItem.length == 0) return console.log("No guid??");
+      lastGuid = guidItem[0].firstChild.nodeValue;
       window.callPhantom({log: "lastguid is " + lastGuid});
+      } catch(e){
+	console.log(e, currentXML.substring(0,100));
+	return;
+      }
     }
     var shareBtnSelector = ".zone-tools > a:first";
     var substract = 5000;
     var getItems = function(url, $) {
+      try{
         //if (!xml && url.endsWith('_1.html')) return false;
-        var items = $('.title-wrapper.text-ellipsis-multiple > a');
+        var items = jQuery('.title-wrapper.text-ellipsis-multiple > a');
         window.callPhantom({log: "working on " + url + " (" + items.length + " items)"});
         for (var i = 0; i < items.length; i++) {
             var a = items[i];
-            var duration = $(a).parent().next('.time').first().html();
+            var duration = jQuery(a).parent().next('.time').first().html();
             var link = a.href;
             var enclosure = link.replace('-audios-mp3_rf', '_mf').replace('_1.html', '_feed_1.mp3');
             var title = a.title;
-            var $button = $(a).next('button');
+            var $button = jQuery(a).next('button');
             var description = $button.attr('data-content');
             var guid = 'http://www.ivoox.com/' + link.replace(/^.*?_([0-9]+)_1\.html$/g, '$1');
             if (lastGuid && guid === lastGuid){
               return true;
             }
-            var pubDate = $(a).parent().nextAll('.action').find('.date').attr("title")
+            var pubDate = jQuery(a).parent().nextAll('.action').find('.date').attr("title")
                               .replace(/^([0-9]+):([0-9]+) - ([0-9]+) de ([a-z]+)\. de ([0-9]+)/g, "$1;$2;$3;$4;$5").split(";");
             var dateTokens = {
               hour: pubDate[0],
@@ -94,6 +108,7 @@ function GetFeed(currentXML){
             itemsImported.push(item);
             window.callPhantom({log: "added item  '" + title + "' (total of " + itemsImported.length + " children)"});
         }
+      } catch(e){console.log("error getItems", e);return true;}
         return false;
     };
     var finishProcess = function(data, prepend){
@@ -134,25 +149,31 @@ function GetFeed(currentXML){
           });
         }
     };
-    var script = document.createElement('script');
-    script.type = "text/javascript";
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js';
+    //var script = document.createElement('script');
+    //script.type = "text/javascript";
+    //script.src = 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js';
+    //script.onerror = function(){
+    //	window.callPhantom({log: "Could not load moment.js!!!"});
+    //};
+    var script = {};
     script.onload = function() {
+	//window.callPhantom({log: 'Script loaded!!'});
         window.xmlItems = [];
         $(shareBtnSelector).click();
         var iframe = document.createElement('iframe');
         iframe.onload = function() {
-            setTimeout(function() {
-                var breakProcess = getItems(iframe.src, iframe.contentWindow.jQuery);
-                var next = breakProcess ? [] : iframe.contentWindow.jQuery("[aria-label='Siguiente']");
+	    setTimeout(function() {
+		console.log("Iframe $", iframe.contentWindow.jQuery);
+                var breakProcess = getItems(iframe.src, iframe.contentWindow.jQuery) || true;
+                var next = breakProcess ? [] : document.querySelectorAll("[aria-label='Siguiente']");//iframe.contentWindow.jQuery("[aria-label='Siguiente']");
                 if (next.length > 0 && next[0].href.indexOf('#') === -1) {
-                    //window.callPhantom({log: 'new url => ' + next[0].href});
+                    window.callPhantom({log: 'new url => ' + next[0].href});
                     iframe.src = next[0].href;
                 } else {
                     try {
                         getXML();
                     } catch (e) {
-                        //window.callPhantom({log: window.xmlItems.join('')});
+                        window.callPhantom({log: window.xmlItems.join('')});
                     }
                 }
             }, PAUSE);
@@ -162,5 +183,6 @@ function GetFeed(currentXML){
         iframe.id = 'ivoox-iframe';
         document.body.appendChild(iframe);
     };
-    document.body.appendChild(script);
+    //document.body.appendChild(script);
+    script.onload();
 };
