@@ -134,5 +134,9 @@
   {
     "url": "https://www.ivoox.com/podcast-milana-bonita_sq_f15762_1.html",
     "outputFile": "mil-bon.xml"
+  },
+  {
+    "url": "https://www.ivoox.com/podcast-librorum_sq_f1497546_1.html",
+    "outputFile": "librorum.xml"
   }
 ]
