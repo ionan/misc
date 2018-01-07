@@ -126,5 +126,9 @@
   {
     "url":"https://www.ivoox.com/podcast-cuarto-milenio-oficial_sq_f17162_1.html",
     "outputFile":"cu-mil.xml"
+  },
+  {
+    "url": "https://www.ivoox.com/podcast-biblioteca-del-te_sq_f1417630_1.html",
+    "outputFile": "bib-te.xml"
   }
 ]
