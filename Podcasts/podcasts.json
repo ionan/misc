@@ -98,5 +98,9 @@
   {
     "url": "https://www.ivoox.com/podcast-serial-me_sq_f1381099_1.html",
     "outputFile" : "sm.xml"
+  },
+  {
+    "url": "https://www.ivoox.com/podcast-luces-horizonte_sq_f146734_1.html",
+    "outputFile": "lu-hor.xml"
   }
 ]
