@@ -102,5 +102,17 @@
   {
     "url": "https://www.ivoox.com/podcast-luces-horizonte_sq_f146734_1.html",
     "outputFile": "lu-hor.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-cronocine_sq_f1449964_1.html",
+    "outputFile": "cro-cin.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-podcast-conversacines_sq_f13086_1.html",
+    "outputFile": "conv-cin.xml"
+  },
+  {
+    "url": "http://www.ivoox.com/podcast-cinemascopazo_sq_f1424117_1.html",
+    "outputFile": "cin-cop.xml"
   }
 ]
