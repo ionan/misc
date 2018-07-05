@@ -1,7 +1,9 @@
 #!/bin/bash
 DATE=`date '+%Y-%m-%d %H:%M:%S'`
 echo "$DATE Start" >> execution_log.txt
-/usr/local/bin/phantomjs job.js
+cd src
+/usr/bin/npm start
+cd ..
 git add *xml
 git commit -m "Update feeds"
 git push

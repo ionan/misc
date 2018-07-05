@@ -61,7 +61,7 @@ async function DoUpdateFeed(url, file){
         var duration = $(a).parent().next('.time').first().html();
         var link = a.attr("href");
         var enclosure = link.replace('-audios-mp3_rf', '_mf').replace('_1.html', '_feed_1.mp3');
-        var title = a.title;
+        var title = a.attr("title");
         var $button = $(a).next('button');
         var description = $button.attr('data-content');
         var guid = 'http://www.ivoox.com/' + link.replace(/^.*?_([0-9]+)_1\.html$/g, '$1');
@@ -109,9 +109,9 @@ async function DoUpdateFeed(url, file){
     	var result = data.toString().replace('<item>', text + '<item>');
 
     	if (isValidSyntaxStructure(result)){
-		  	fs.writeFile('../' + file + '.temp', result, 'utf8', function (err) {
+		  	fs.writeFile('../' + file, result, 'utf8', function (err) {
 		     	if (err) return console.log(err);
-		     	else console.log('File successfully written! - Check your project directory for the ' + file + '.temp file');
+		     	else console.log('File successfully written! - Check your project directory for the ' + file + ' file');
 		  	});
 	  	} else {
 	  		console.err("Invalid xml!!!");
