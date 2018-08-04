@@ -122,5 +122,9 @@
   {
     "url": "http://www.ivoox.com/podcast-documentales-sonoros_sq_f19701_1.html",
     "outputFile": "docu-sono.xml"
+  },
+  {
+    "url":"https://www.ivoox.com/podcast-cuarto-milenio-oficial_sq_f17162_1.html",
+    "outputFile":"cu-mil.xml"
   }
 ]
