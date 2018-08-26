@@ -44,6 +44,36 @@ function request(url) {
   });
 }
 
+async function getPremiumLink(url){
+    try {
+    var prehtml = await request(url);
+    var idx1 = prehtml.indexOf("$('.downloadlink').load('downloadlink_mm_");
+//console.log("idx1: " + idx1);
+    var b = prehtml.substring(idx1, idx1 + 150);
+    var idx2 = b.indexOf('downloadlink_mm');
+//console.log("idx2: " + idx2);
+    var c = b.substring(idx2, idx2 + 50);
+    var idx3 = c.indexOf("'");
+//console.log("idx3: " + idx3);
+    var newurl = "https://www.ivoox.com/" + c.substring(0, idx3);
+    var html = await request(newurl);
+
+    var idx1 = html.indexOf("downloadFollow(event,");
+//console.log("idx1: " + idx1);
+    var urlAndMore = html.substring(idx1 + 22, idx1 + 150);
+    var idx2 = urlAndMore.indexOf("'");
+//console.log("idx2: " + idx2 + " (" + urlAndMore + ")");
+    var realUrl = urlAndMore.substring(0, idx2);
+//    console.log("URL => " + realUrl);
+    if (realUrl.indexOf("https://www.ivoox.com") == 0)
+      return realUrl;
+    return null;
+  } catch (e) {
+    console.log(e);
+        return null;
+    } 
+ }
+
 async function DoUpdateFeed(url, file){
 	// Read file
 	var data = await readfile("../" + file);
@@ -56,17 +86,29 @@ async function DoUpdateFeed(url, file){
     var $ = cheerio.load(html);
 
     var itemsImported = [];
-    $(".title-wrapper.text-ellipsis-multiple > a").each(function (i, elem) {
-    	var a = $(this);
+    var podcastElems = $(".title-wrapper.text-ellipsis-multiple > a");
+    for (var i = 0; i < podcastElems.length; i++){
+    //$(".title-wrapper.text-ellipsis-multiple > a").each(function (i, elem) {
+    	  //var a = $(this);
+        var a = $(podcastElems[i]);
         var duration = $(a).parent().next('.time').first().html();
         var link = a.attr("href");
         var enclosure = link.replace('-audios-mp3_rf', '_mf').replace('_1.html', '_feed_1.mp3');
         var title = a.attr("title");
+        var apoyo = a.parents(".content").next(".footer-modulo").find(".play.fan-sus").length > 0;
+        if (apoyo){
+          var prem_enclosure = await getPremiumLink(a.attr("href"));
+          console.log("   Is premium link! (" + prem_enclosure + ")");
+          enclosure = prem_enclosure != null ? prem_enclosure : enclosure;
+          title = '(APOYAR) ' + title;
+        }
         var $button = $(a).next('button');
         var description = $button.attr('data-content');
         var guid = 'http://www.ivoox.com/' + link.replace(/^.*?_([0-9]+)_1\.html$/g, '$1');
+        console.log("   Podcast with title: " + title + " (guid " + guid + ")");
         if (lastGuid && guid == lastGuid){
-          return false;
+          //return false;
+          break;
         }
         var pubDate = $(a).parent().nextAll('.action').find('.date').attr("title")
                           .replace(/^([0-9]+):([0-9]+) - ([0-9]+) de ([a-z]+)\. de ([0-9]+)/g, "$1;$2;$3;$4;$5").split(";");
@@ -91,10 +133,11 @@ async function DoUpdateFeed(url, file){
         	"pubDate": moment(pubDate).format('dd, DD MMM YYYY HH:mm:ss'),
         	"itunes:duration": duration
         });
-	});
-
+	//});
+  }
+    console.log("Imported items: " + itemsImported.length);
     if (itemsImported.length > 0){
-    	var text = '';
+      var text = '';
     	for (var i = 0; i < itemsImported.length; i++){
     		text += '<item>' + 
 					'<title><![CDATA[' + itemsImported[i].title + ']]></title>' + 
