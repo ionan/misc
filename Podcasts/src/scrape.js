@@ -104,9 +104,10 @@ async function DoUpdateFeed(url, file){
         }
         var $button = $(a).next('button');
         var description = $button.attr('data-content');
-        var guid = 'http://www.ivoox.com/' + link.replace(/^.*?_([0-9]+)_1\.html$/g, '$1');
+        var guid = 'https://www.ivoox.com/' + link.replace(/^.*?_([0-9]+)_1\.html$/g, '$1') + '_v2';
+        var oldGuidFormat = 'http://www.ivoox.com/' + link.replace(/^.*?_([0-9]+)_1\.html$/g, '$1');
         console.log("   Podcast with title: " + title + " (guid " + guid + ")");
-        if (lastGuid && guid == lastGuid){
+        if (lastGuid && (guid == lastGuid || oldGuidFormat == lastGuid)){
           //return false;
           break;
         }
