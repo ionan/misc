@@ -36,7 +36,7 @@ function getCookies(callback){
           'Cookie': 'countAudios=5; countaudioplay=a%3A3%3A%7Bi%3A36911382%3Bi%3A1%3Bi%3A35751767%3Bi%3A3%3Bi%3A36019810%3Bi%3A1%3B%7D; cookies_policy_accepted=b24gMjAxOS0wNi0xNiAxODoyMDowMSBhY2NlcHRlZA%3D%3D; IE-set_country=RVM%3D; IE-LANG_CODE=ZXNfRVM%3D; G_ENABLED_IDPS=google'
       },
       uri: 'https://www.ivoox.com/login_zl.html',
-      body: config.IVOOX_LOGIN
+      body: config.IVOOX_LOGIN,
       method: 'POST'
     }, function (error, response, body) {
         if (!error && response.statusCode == 200) {
