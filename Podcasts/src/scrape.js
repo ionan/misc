@@ -70,6 +70,8 @@ async function DoUpdateFeed(url, file){
         if (apoyo){
           enclosure = config.SERVER + a.attr("href").replace(/^.*?ivoox\.com\/(.*?)\.html/g,"$1");
           title = '(APOYAR) ' + title;
+        } else {
+          enclosure = config.SERVER + a.attr("href").replace(/^.*?ivoox\.com\/(.*?)\.html/g,"$1");
         }
         var $button = $(a).next('button');
         var description = $button.attr('data-content');
