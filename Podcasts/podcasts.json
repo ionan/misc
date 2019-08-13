@@ -146,5 +146,9 @@
   {
     "url": "https://www.ivoox.com/podcast-ohhh-tv-podcast-ohhhtv_sq_f1554_1.html",
     "outputFile": "ohhtv.xml"
+  },
+  {
+    "url": "https://www.ivoox.com/podcast-dias-extranos-santiago-camacho_sq_f1413939_1.html",
+    "outputFile": "dext.xml"
   }
 ]
