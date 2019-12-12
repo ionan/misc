@@ -150,5 +150,9 @@
   {
     "url": "https://www.ivoox.com/podcast-dias-extranos-santiago-camacho_sq_f1413939_1.html",
     "outputFile": "dext.xml"
+  },
+  {
+    "url": "https://www.ivoox.com/podcast-streamshow_sq_f1817364_1.html",
+    "outputFile": "strshw.xml"
   }
 ]
