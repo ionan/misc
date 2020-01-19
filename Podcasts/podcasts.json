@@ -154,5 +154,13 @@
   {
     "url": "https://www.ivoox.com/podcast-streamshow_sq_f1817364_1.html",
     "outputFile": "strshw.xml"
+  },
+  {
+    "url": "https://www.ivoox.com/podcast-constante-series_sq_f1231999_1.html",
+    "outputFile": "lacons.xml"
+  },
+  {
+    "url": "https://www.ivoox.com/podcast-laboratorio-investigacion-series_sq_f1381875_1.html",
+    "outputFile": "lis.xml"
   }
 ]
