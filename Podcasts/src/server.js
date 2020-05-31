@@ -1,3 +1,5 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 const http = require('http');
 const _request = require('request');
 const https = require('https');

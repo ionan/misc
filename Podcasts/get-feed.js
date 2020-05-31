@@ -1,3 +1,5 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 var PAUSE = 5000;
 var months = {
   "ene": "01",
