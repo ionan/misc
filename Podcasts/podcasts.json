@@ -162,5 +162,9 @@
   {
     "url": "https://www.ivoox.com/podcast-laboratorio-investigacion-series_sq_f1381875_1.html",
     "outputFile": "lis.xml"
+  },
+  {
+    "url": "https://www.ivoox.com/podcast-podcast-carne-de-videoclub_sq_f142809_1.html",
+    "outputFile": "cdv.xml"
   }
 ]
