@@ -10,5 +10,9 @@
   {
     "url": "https://www.ivoox.com/podcast-luces-horizonte_sq_f146734_1.html",
     "outputFile": "luces-en-el-horizonte.xml"
+  },
+  {
+    "url": "https://www.ivoox.com/podcast-octavo-pasajero_sq_f14315_1.html",
+    "outputFile": "el-octavo-pasajero.xml"
   }
 ]
